@@ -12,4 +12,9 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Ensure Vite builds the static site into the folder Netlify expects.
+  build: {
+    outDir: ".output/public",
+    emptyOutDir: true,
+  },
 });
