@@ -5,12 +5,15 @@ import {
   ShieldCheck, Activity, Microscope, Clock, MapPin, ChevronRight, Plus, Quote, Star,
 } from "lucide-react";
 import heroWhitening from "@/assets/hero-whitening.jpg";
-import trustPortrait from "@/assets/trust-portrait.jpg";
 import equipChair from "@/assets/equipment-chair.jpg";
 import equipScanner from "@/assets/equipment-scanner.jpg";
 import equipXray from "@/assets/equipment-xray.jpg";
 import charisLogo from "@/assets/charis-logo.asset.json";
-import whiteningBA from "@/assets/whitening-before-after.asset.json";
+import baReal1 from "@/assets/ba-real-1.jpeg.asset.json";
+import baReal2 from "@/assets/ba-real-2.png.asset.json";
+import baReal3 from "@/assets/ba-real-3.png.asset.json";
+import clinicInterior from "@/assets/clinic-real.jpeg.asset.json";
+import dentistPortrait from "@/assets/dentist-portrait.jpg";
 
 const PHONE_DISPLAY = "0814 331 5547";
 const PHONE_TEL = "+2348143315547";
@@ -19,6 +22,9 @@ const WHATSAPP_CATALOGUE = `https://wa.me/2348143315547?text=${encodeURIComponen
 )}`;
 const WHATSAPP_BASE = "https://wa.me/2348143315547";
 const EMAIL_ADDRESS = "exceedingcharisdentalmedical@gmail.com";
+const MAP_QUERY = "15 Ihama Road, GRA, Benin City, Nigeria";
+const MAP_EMBED = `https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&output=embed`;
+const MAP_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAP_QUERY)}`;
 const serviceOptions = [
   "Teeth Whitening",
   "Advanced Surgery",
@@ -108,20 +114,23 @@ function Index() {
 
 function Dock() {
   return (
-    <nav className="fixed left-1/2 top-4 z-50 -translate-x-1/2">
-      <div className="glass-dock flex items-center gap-1 rounded-full px-2 py-2 sm:gap-2 sm:px-3">
-        <a href="#" className="flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-bold tracking-tight">
-          <img src={charisLogo.url} alt="Exceeding Charis Dental Clinic logo" width={28} height={28} className="h-7 w-7 rounded-full ring-1 ring-midnight/10" />
-          <span className="hidden sm:inline">Charis</span>
+    <nav className="fixed left-1/2 top-4 z-50 w-[calc(100%-1.5rem)] max-w-5xl -translate-x-1/2">
+      <div className="glass-dock flex items-center justify-between gap-2 rounded-full px-3 py-2 sm:px-4">
+        <a href="#" className="flex min-w-0 items-center gap-2.5 rounded-full">
+          <img src={charisLogo.url} alt="Exceeding Charis Dental Clinic logo" width={32} height={32} className="h-8 w-8 shrink-0 rounded-full ring-1 ring-midnight/10" />
+          <span className="truncate text-[13px] font-extrabold tracking-tight text-midnight-deep sm:text-base">
+            <span className="sm:hidden">Exceeding Charis Dental Clinic</span>
+            <span className="hidden sm:inline">Exceeding Charis Dental Clinic</span>
+          </span>
         </a>
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden items-center gap-1 lg:flex">
           {navLinks.map((l) => (
             <a key={l.label} href={l.href} className="rounded-full px-3 py-1.5 text-sm font-medium text-midnight/70 transition hover:bg-midnight/5 hover:text-midnight">
               {l.label}
             </a>
           ))}
         </div>
-        <a href="#booking" className="ml-1 inline-flex items-center gap-1.5 rounded-full bg-midnight px-3 py-1.5 text-sm font-semibold text-clinical transition hover:bg-obsidian sm:px-4">
+        <a href="#booking" className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-midnight px-3.5 py-1.5 text-xs font-semibold text-clinical transition hover:bg-obsidian sm:px-4 sm:text-sm">
           Book <ArrowUpRight className="h-3.5 w-3.5" />
         </a>
       </div>
@@ -170,17 +179,21 @@ function Hero() {
           <div className="relative">
             <div className="relative overflow-hidden rounded-[2rem] bg-obsidian">
               <img src={heroWhitening} alt="Professional LED teeth whitening treatment at Exceeding Charis" width={1600} height={1024} className="h-full w-full object-cover" />
-              <div className="absolute inset-x-4 bottom-4 flex items-center justify-between rounded-2xl glass-dark px-4 py-3 text-clinical">
-                <div>
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-mint">In session</p>
-                  <p className="text-sm font-semibold">LED Teeth Whitening</p>
-                </div>
-                <Microscope className="h-5 w-5 text-mint" />
-              </div>
             </div>
-            <div className="absolute -left-4 -top-4 hidden rounded-2xl bg-white p-4 shadow-xl ring-1 ring-midnight/5 sm:block">
-              <p className="text-[10px] uppercase tracking-[0.2em] text-midnight/40">Avg. consult</p>
-              <p className="text-2xl font-extrabold text-midnight-deep">12 min</p>
+            <div className="mt-4 flex items-center justify-between gap-4 rounded-2xl border border-midnight/10 bg-white px-4 py-3">
+              <div className="flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-mint-soft text-midnight">
+                  <Microscope className="h-4 w-4" />
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-midnight/40">In session</p>
+                  <p className="text-sm font-semibold text-midnight-deep">LED Teeth Whitening</p>
+                </div>
+              </div>
+              <div className="text-right">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-midnight/40">Avg. consult</p>
+                <p className="text-lg font-extrabold text-midnight-deep">12 min</p>
+              </div>
             </div>
           </div>
         </div>
@@ -311,26 +324,13 @@ function Booking() {
   const times = ["09:00", "10:30", "12:00", "14:00", "15:30", "17:00"];
 
   const chosenDay = days[selectedDay];
-  
-  // Format the Date object nicely
-  const getFormattedDate = () => {
-    if (!chosenDay) return "";
-    const d = new Date();
-    d.setDate(d.getDate() + selectedDay);
-    return d.toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-  };
-
   const bookingMessage =
-    `🦷 *EXCEEDING CHARIS DENTAL CLINIC* 🦷\n` +
-    `_New Appointment Booking Request_\n\n` +
-    `👤 *Patient Name:* ${fullName.trim() || "(Not Provided)"}\n` +
-    `📞 *Phone Number:* ${phone.trim() || "(Not Provided)"}\n` +
-    `📋 *Requested Service:* ${service}\n` +
-    `📅 *Date:* ${getFormattedDate()}\n` +
-    `⏰ *Time Slot:* ${selectedTime}\n\n` +
-    `---\n` +
-    `_Sent via Exceeding Charis Dental Web Portal_`;
-
+    `Hello Charis — I'd like to book an appointment.\n` +
+    `Service: ${service}\n` +
+    `Day: ${chosenDay?.label} ${chosenDay?.date}\n` +
+    `Time: ${selectedTime}\n` +
+    `Name: ${fullName || "(not provided)"}\n` +
+    `Phone: ${phone || "(not provided)"}`;
   const bookingWhatsApp = `${WHATSAPP_BASE}?text=${encodeURIComponent(bookingMessage)}`;
 
   return (
@@ -355,6 +355,19 @@ function Booking() {
                   </div>
                 </div>
               ))}
+            </div>
+            <div className="mt-6 overflow-hidden rounded-3xl border border-midnight/10 bg-white">
+              <iframe
+                title="Exceeding Charis Dental Clinic — 15 Ihama Road, GRA, Benin City"
+                src={MAP_EMBED}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-64 w-full border-0"
+              />
+              <a href={MAP_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-3 px-5 py-3 text-sm font-semibold text-midnight-deep transition hover:bg-midnight/5">
+                <span className="inline-flex items-center gap-2"><MapPin className="h-4 w-4 text-mint" /> Open in Google Maps</span>
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
             </div>
           </div>
 
@@ -413,12 +426,6 @@ function Booking() {
             </div>
             <a
               href={bookingWhatsApp}
-              onClick={(e) => {
-                if (!fullName.trim() || !phone.trim()) {
-                  e.preventDefault();
-                  alert("Please enter both your full name and phone number to confirm your appointment.");
-                }
-              }}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-midnight px-6 py-4 text-sm font-semibold text-clinical transition hover:bg-obsidian"
@@ -438,8 +445,13 @@ function Trust() {
     <section className="border-y border-midnight/10 bg-white py-16">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-16">
         <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.3fr]">
-          <div className="overflow-hidden rounded-[2rem]">
-            <img src={trustPortrait} alt="Confident smiling professional" loading="lazy" width={1280} height={960} className="h-full w-full object-cover" />
+          <div className="grid gap-3">
+            <div className="overflow-hidden rounded-[2rem]">
+              <img src={dentistPortrait} alt="Nigerian dentist at Exceeding Charis Dental Clinic" loading="lazy" width={1280} height={1280} className="h-full w-full object-cover" />
+            </div>
+            <div className="overflow-hidden rounded-2xl">
+              <img src={clinicInterior.url} alt="Exceeding Charis Dental Clinic interior — GRA, Benin City" loading="lazy" width={1600} height={1024} className="h-full w-full object-cover" />
+            </div>
           </div>
           <div>
             <p className="text-[11px] uppercase tracking-[0.24em] text-midnight/50">04 — Trusted by</p>
@@ -500,24 +512,35 @@ function Footer() {
 }
 
 function Testimonials() {
+  const beforeAfters = [
+    { img: baReal1.url, name: "Ifeoma A.", city: "Benin City", procedure: "Scaling & Polishing", note: "Deep clean, restored enamel" },
+    { img: baReal2.url, name: "Emeka O.", city: "Benin City", procedure: "Implant & Crown Restoration", note: "Full anterior rebuild" },
+    { img: baReal3.url, name: "Chiamaka N.", city: "Benin City", procedure: "Whitening & Alignment Review", note: "Brighter, healthier smile" },
+  ];
   return (
     <section id="testimonials" className="px-5 py-24 sm:px-8 lg:px-16">
       <div className="mx-auto max-w-7xl">
-        <SectionLabel kicker="05 — Results" title={<>Smiles, transformed.</>} sub="Real patients. Real outcomes. Photographed under clinical lighting." />
+        <SectionLabel kicker="05 — Results" title={<>Smiles, transformed.</>} sub="Real Nigerian patients. Real outcomes. Photographed under clinical lighting." />
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-[1.05fr_1fr] lg:items-stretch">
-          <figure className="group relative overflow-hidden rounded-[2rem] bg-obsidian">
-            <img src={whiteningBA.url} alt="Before and after professional teeth whitening at Exceeding Charis Dental Clinic" loading="lazy" className="h-full w-full object-cover" />
-            <figcaption className="absolute inset-x-4 bottom-4 flex items-center justify-between rounded-2xl glass-dark px-4 py-3 text-clinical">
-              <div>
-                <p className="text-[10px] uppercase tracking-[0.2em] text-mint">Before → After</p>
-                <p className="text-sm font-semibold">Single-session LED Whitening</p>
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          {beforeAfters.map((b) => (
+            <figure key={b.name} className="overflow-hidden rounded-3xl border border-midnight/10 bg-white">
+              <div className="aspect-[4/3] w-full overflow-hidden bg-clinical">
+                <img src={b.img} alt={`Before and after ${b.procedure} — ${b.name}`} loading="lazy" className="h-full w-full object-cover" />
               </div>
-              <span className="rounded-full bg-mint px-3 py-1 text-[11px] font-bold text-midnight-deep">+8 shades</span>
-            </figcaption>
-          </figure>
+              <figcaption className="flex items-start justify-between gap-3 p-5">
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-midnight/40">Before → After</p>
+                  <p className="mt-1 text-sm font-bold text-midnight-deep">{b.procedure}</p>
+                  <p className="mt-0.5 text-xs text-midnight/55">{b.name} · {b.city}</p>
+                </div>
+                <span className="shrink-0 rounded-full bg-mint px-2.5 py-1 text-[10px] font-bold text-midnight-deep">{b.note}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
 
-          <div className="grid gap-4">
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
             {testimonials.map((t) => (
               <article key={t.name} className="relative rounded-3xl border border-midnight/8 bg-white p-6 transition hover:border-midnight/20">
                 <Quote className="absolute right-6 top-6 h-6 w-6 text-mint" />
@@ -538,7 +561,6 @@ function Testimonials() {
                 </footer>
               </article>
             ))}
-          </div>
         </div>
       </div>
     </section>
