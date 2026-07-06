@@ -13,7 +13,7 @@ import baReal1 from "@/assets/ba-real-1.jpeg.asset.json";
 import baReal2 from "@/assets/ba-real-2.png.asset.json";
 import baReal3 from "@/assets/ba-real-3.png.asset.json";
 import clinicInterior from "@/assets/clinic-real.jpeg.asset.json";
-import dentistPortrait from "@/assets/dentist-portrait.jpg";
+import heroAligner from "@/assets/hero-aligner.jpg";
 
 const PHONE_DISPLAY = "0814 331 5547";
 const PHONE_TEL = "+2348143315547";
@@ -27,11 +27,11 @@ const MAP_EMBED = `https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)
 const MAP_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAP_QUERY)}`;
 const serviceOptions = [
   "Teeth Whitening",
-  "Advanced Surgery",
-  "Laser Dentistry",
+  "Braces / Clear Aligners",
+  "Tooth Extraction",
   "Dental Implants",
   "Cosmetic & Veneers",
-  "Pediatric Care",
+  "Scaling and Polishing",
   "General Consultation",
   "Emergency / After-hours",
 ];
@@ -57,11 +57,11 @@ const navLinks = [
 
 const services = [
   { icon: Sparkles, title: "Teeth Whitening", tag: "Cosmetic Brightening", copy: "Clinical-grade LED whitening. Up to 8 shades brighter in a single session.", span: "md:col-span-2 md:row-span-2", featured: true },
-  { icon: Stethoscope, title: "Advanced Surgery", tag: "Oral & Maxillofacial", copy: "Hospital-grade procedures, performed in-house." },
-  { icon: Zap, title: "Laser Dentistry", tag: "Precision Care", copy: "No drills. Less pain. Faster healing." },
+  { icon: Stethoscope, title: "Braces / Clear Aligners", tag: "Orthodontics", copy: "Invisible aligners and precision braces for every age." },
+  { icon: Zap, title: "Tooth Extraction", tag: "Oral Surgery", copy: "Gentle, atraumatic removal with rapid recovery protocols." },
   { icon: Layers, title: "Dental Implants", tag: "Permanent Restoration", copy: "Titanium-grade implants with lifetime structural integrity." },
   { icon: Activity, title: "Cosmetic & Whitening", tag: "Smile Design", copy: "Editorial-grade veneers and brightening." },
-  { icon: ShieldCheck, title: "Pediatric Care", tag: "Family Dentistry", copy: "Gentle, world-class care from age one." },
+  { icon: ShieldCheck, title: "Scaling and Polishing", tag: "Preventive Care", copy: "Deep cleaning that restores enamel health and natural shine." },
 ];
 
 const equipment = [
@@ -91,9 +91,9 @@ const equipment = [
 const partners = ["AXA Mansard", "Hygeia HMO", "Avon Healthcare", "Reliance HMO", "Leadway Health", "NDIC", "FDA Approved", "ISO 13485", "Total Health Trust"];
 
 const testimonials = [
-  { name: "Adaeze Okonkwo", role: "Lagos", quote: "The whitening result was unreal. Eight shades brighter in one afternoon — my wedding photos speak for themselves." },
+  { name: "Adaeze Okonkwo", role: "Benin City", quote: "The whitening result was unreal. Eight shades brighter in one afternoon — my wedding photos speak for themselves." },
   { name: "Chukwuemeka Eze", role: "Benin City", quote: "Rushed in at 2am with a broken molar. A specialist met me at the door. This clinic genuinely never closes." },
-  { name: "Ngozi Balogun", role: "Abuja", quote: "Aligners, implants, whitening — all under one roof, all world-class. Exceeding Charis earns the name." },
+  { name: "Ngozi Balogun", role: "Benin City", quote: "Aligners, implants, whitening — all under one roof, all world-class. Exceeding Charis earns the name." },
 ];
 
 function Index() {
@@ -447,7 +447,7 @@ function Trust() {
         <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.3fr]">
           <div className="grid gap-3">
             <div className="overflow-hidden rounded-[2rem]">
-              <img src={dentistPortrait} alt="Nigerian dentist at Exceeding Charis Dental Clinic" loading="lazy" width={1280} height={1280} className="h-full w-full object-cover" />
+              <img src={heroAligner} alt="Clear dental aligner treatment at Exceeding Charis Dental Clinic" loading="lazy" width={1280} height={1280} className="h-full w-full object-cover" />
             </div>
             <div className="overflow-hidden rounded-2xl">
               <img src={clinicInterior.url} alt="Exceeding Charis Dental Clinic interior — GRA, Benin City" loading="lazy" width={1600} height={1024} className="h-full w-full object-cover" />
@@ -484,7 +484,7 @@ function Footer() {
         <div>
           <div className="flex items-center gap-2 text-2xl font-extrabold tracking-tight">
             <img src={charisLogo.url} alt="Exceeding Charis Dental Clinic" width={40} height={40} className="h-10 w-10 rounded-full bg-white p-0.5" />
-            Charis
+            Exceeding Charis Dental Clinic
           </div>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-clinical/60">
             Exceeding Charis Dental Clinic — premier 24/7 advanced dental care and B2B equipment supply. 15 Ihama Road, GRA, Benin City.
